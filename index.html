@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -9,25 +10,68 @@
 </head>
 
 <body>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="wrap nav-inner">
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a class="btn primary" href="mailto:lambcocleaningco@gmail.com?subject=Cleaning%20Quote%20Request">Get a Quote</a>
+      </div>
+    </div>
+  </nav>
+
   <header class="wrap hero">
     <div class="hero-content">
-      <p class="badge">Residential Cleaning</p>
-      <h1>Lamb Co Cleaning</h1>
-      <p class="sub">Reliable, detail-focused home cleaning. Serving Edmonton & surrounding areas.</p>
+      <p class="sub">Reliable, detail-focused home cleaning. Serving St-Albert & surrounding areas.</p>
 
       <div class="cta">
         <a class="btn primary" href="mailto:lambcocleaningco@gmail.com?subject=Cleaning%20Quote%20Request&body=Hi%20Lamb%20Co%20Cleaning,%0D%0A%0D%0AI'd%20like%20a%20quote.%0D%0A%0D%0AName:%0D%0APhone:%0D%0AAddress/Area:%0D%0AService%20type%20(Standard/Deep/Move-in-out/Airbnb):%0D%0APreferred%20days/times:%0D%0ADetails:%0D%0A">Email for a Quote</a>
-
-        <a class="btn" href="https://www.instagram.com/lambcocleaning/" target="_blank" rel="noreferrer">Instagram</a>
+        <a class="btn primary" href="https://www.instagram.com/lambcocleaning/" target="_blank" rel="noreferrer">Instagram</a>
       </div>
 
       <div class="small">
         Or call/text: <a class="link" href="tel:+17802651749">+1 (780) 265-1749</a>
       </div>
     </div>
-
     <div class="hero-visual" aria-hidden="true"></div>
   </header>
+
+  <section class="wrap social-proof" aria-hidden="false">
+    <div class="social-inner">
+      <div class="stars">★★★★★</div>
+      <div class="proof-text">Trusted by dozens of local homeowners — consistent 5‑star service</div>
+      <div class="proof-cta"><a class="btn primary" href="#testimonials">Read Reviews</a></div>
+    </div>
+  </section>
+
+  <section id="about" class="wrap section about">
+    <div class="about-grid">
+      <div class="about-media" aria-hidden="true" style="background-image:url('assets/livingroom1.jpg')"></div>
+      <div class="about-copy">
+        <h2>About Lamb Co Cleaning</h2>
+        <p class="muted">Owner-operated local cleaning service focused on reliability, detail, and trust. Avril leads a small, vetted team who treat your home like theirs.</p>
+        <p>We offer flexible scheduling, COVID-safe practices, and specialty Airbnb turnovers. Our clients consistently praise the attention to detail and friendly service.</p>
+        <div class="cta" style="margin-top:18px">
+          <a class="btn primary" href="mailto:lambcocleaningco@gmail.com?subject=About%20Lamb%20Co">Contact Lamb Co Cleaning</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap features">
+    <div class="features-band">
+      <h3>What you get with Lamb Co Cleaning</h3>
+      <div class="features-grid">
+        <div class="card"><h3>Vetted Cleaners</h3><p class="muted">Background checked and insured.</p></div>
+        <div class="card"><h3>Eco Options</h3><p class="muted">Fragrance-free and family-friendly products.</p></div>
+        <div class="card"><h3>Fast Turnarounds</h3><p class="muted">Consistent Airbnb turnovers and quick scheduling.</p></div>
+      </div>
+    </div>
+  </section>
 
   <main class="wrap">
     <section class="section">
@@ -37,6 +81,20 @@
         <div class="card"><h3>Deep Cleaning</h3><p>Detail-focused cleaning for buildup, baseboards, and high-touch spots.</p></div>
         <div class="card"><h3>Move In / Move Out</h3><p>A full reset before keys change hands.</p></div>
         <div class="card"><h3>Airbnb Turnovers</h3><p>Fast, consistent refresh between guests.</p></div>
+      </div>
+    </section>
+
+    <section class="wrap lead-magnet">
+      <div class="lead-card">
+        <div class="lead-copy">
+          <h2>Get a Free Cleaning Checklist</h2>
+          <p class="muted">Sign up to receive our quick cleaning checklist and tips to keep your home guest-ready.</p>
+          <form class="lead-form" action="#" onsubmit="return false;">
+            <input type="email" placeholder="Your email" aria-label="Email" required>
+            <button class="btn primary" type="submit">Send me the checklist</button>
+          </form>
+        </div>
+        <div class="lead-image" aria-hidden="true" style="background-image:url('assets/kitchen1.jpg')"></div>
       </div>
     </section>
 
@@ -159,4 +217,3 @@
     })();
   </script>
 </body>
-</html>

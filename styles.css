@@ -1,15 +1,18 @@
 :root{
-  /* fresh, airy palette for a cleaning business */
-  --bg: #f8fcfb;             /* very light aqua */
-  --card: #ffffff;           /* card background */
-  --text: #0f172a;           /* deep slate for text */
-  --muted: #6b7280;          /* softer secondary text */
-  --border: rgba(15,23,42,.06); /* subtle neutral border */
+  /* warm, neutral palette inspired by the footer examples */
+  --bg: #f7efe6;            /* warm cream background */
+  --card: #ffffff;          /* card background */
+  --text: #1f2933;          /* dark charcoal for text */
+  --muted: #6b6b6b;         /* muted greys */
+  --border: rgba(31,41,51,.06); /* subtle neutral border */
 
-  --accent: #06b6d4;        /* bright aqua accent */
-  --accentSoft: rgba(6,182,212,.12); /* soft accent background */
-  --accentBorder: rgba(6,182,212,.18);
-  --cardShadow: 0 8px 20px rgba(12, 18, 27, .06);
+  --accent: #2b8fbf;        /* soft blue accent */
+  --accentSoft: rgba(43,143,191,.10); /* soft accent background */
+  --accentBorder: rgba(43,143,191,.18);
+  --cardShadow: 0 10px 30px rgba(31,41,51,.06);
+
+  --footer-bg: #1f2933;     /* dark footer background */
+  --footer-text: #e6eef2;   /* light footer text */
 }
 
 *{box-sizing:border-box}
@@ -59,7 +62,7 @@ h1{margin:0 0 12px;font-size:44px;letter-spacing:-0.02em;font-weight:600}
   background:var(--accent);
   border-color:var(--accentBorder);
   color: #fff;
-  box-shadow: 0 8px 18px rgba(6,182,212,.12);
+  box-shadow: 0 8px 18px rgba(43,143,191,.12);
 }
 .btn:hover{transform:translateY(-2px)}
 .btn.primary:hover{filter:brightness(.98)}
@@ -102,10 +105,94 @@ h2{margin:0 0 12px;font-size:22px}
   background-repeat: no-repeat;
 }
 
+/* Top navigation */
+.site-nav{padding:14px 0;background:transparent}
+.site-nav{padding:0;margin:0;background-image:url('assets/logo.jpg');background-size: 1000px 350px;;background-position:center;height:260px}
+.site-nav .nav-inner{display:flex;align-items:flex-end;gap:12px;height:100%;padding-bottom:14px;position:relative}
+.logo{font-weight:700;color:var(--footer-text);text-shadow:0 2px 6px rgba(0,0,0,.25)}
+.nav-links{list-style:none;margin:0;padding:0;position:absolute;left:50%;transform:translateX(-50%);bottom:14px;display:flex;gap:10px;z-index:2}
+.nav-links li{display:inline-block}
+.nav-links a{display:inline-block;padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.95);color:var(--text);text-decoration:none}
+.nav-cta{margin-left:auto}
+.site-nav{background-repeat:no-repeat}
+
+/* Hero logo inside the hero card */
+.site-logo{
+  width:240px;
+  height:auto;
+  display:block;
+  margin-bottom:12px;
+}
+
+@media (max-width:720px){
+  .site-logo{width:96px}
+}
+
+/* Social proof strip */
+.social-proof{background:transparent;padding:10px 0}
+.social-inner{display:flex;align-items:center;gap:12px;justify-content:center}
+.social-inner .stars{font-weight:700;color:var(--accent)}
+.proof-text{color:var(--muted)}
+.proof-cta .btn{padding:8px 12px;border-radius:10px}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+.about-media{height:220px;border-radius:14px;background-size:cover;background-position:center}
+.about-copy h2{margin-top:0}
+
+/* Features band */
+.features-band{background:var(--accentSoft);padding:20px;border-radius:14px;margin-top:12px}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
+.features-grid .card{background:transparent;border:1px solid rgba(255,255,255,.06);}
+
+/* Lead magnet */
+.lead-magnet{padding:0}
+.lead-card{display:grid;grid-template-columns:1fr 340px;gap:16px;align-items:center;margin:18px 0}
+.lead-card .lead-copy{background:var(--card);padding:20px;border-radius:14px;box-shadow:var(--cardShadow)}
+.lead-card .lead-image{height:160px;border-radius:12px;background-size:cover;background-position:center}
+.lead-form{display:flex;gap:10px;margin-top:12px}
+.lead-form input{flex:1;padding:10px;border-radius:10px;border:1px solid var(--border)}
+
+@media (max-width:980px){
+  .about-grid{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr}
+  .lead-card{grid-template-columns:1fr}
+}
+
+/* Section dividers and clearer separation */
+/* Add consistent top border to any main block inside the .wrap that's not the hero */
+.wrap > .social-proof,
+.wrap > .section,
+.wrap > .features,
+.wrap > .lead-magnet,
+.wrap > .testimonials,
+.wrap > .about{
+  border-top: 1px solid var(--border);
+  padding-top: 22px;
+  margin-top: 18px;
+}
+
+/* Slightly more pronounced divider utility for emphasis */
+.divider-full{
+  width:100%;
+  height:1px;
+  background:var(--border);
+  margin:22px 0;
+}
+
+/* Footer divider stronger to finish the page */
+.footer{border-top:2px solid rgba(31,41,51,.08)}
+
 /* Tweak hero layout on medium/smaller screens */
 @media (max-width:980px){
   .hero{grid-template-columns:1fr;gap:18px}
   .hero-visual{height:260px}
+}
+
+@media (max-width:720px){
+  .site-nav{height:120px}
+  .site-nav .nav-inner{padding-bottom:10px}
+  .nav-links{gap:12px}
 }
 .card h3{margin:0 0 8px;font-size:16px}
 .card p{margin:0;color:var(--muted);line-height:1.6}
@@ -165,14 +252,18 @@ h2{margin:0 0 12px;font-size:22px}
   margin-top:22px;
 }
 .footer{
-  border-top:1px solid var(--border);
-  padding:20px 0 44px;
+  border-top:1px solid rgba(255,255,255,.04);
+  padding:26px 0 40px;
   display:flex;
   justify-content:space-between;
   gap:12px;
   flex-wrap:wrap;
-  color:var(--muted);
+  background:var(--footer-bg);
+  color:var(--footer-text);
 }
+
+.footer a{color:var(--footer-text);opacity:.9}
+.footer .muted{color:rgba(230,238,242,.85)}
 
 @media (max-width:720px){
   h1{font-size:32px}
