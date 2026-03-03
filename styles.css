@@ -194,6 +194,11 @@ h2{margin:0 0 12px;font-size:22px}
   .site-nav .nav-inner{padding-bottom:10px}
   .nav-links{gap:12px}
 }
+
+/* Active / hover states for nav links */
+.nav-links a:hover,
+.nav-links a:focus{background:var(--accent);color:#fff;border-color:var(--accentBorder);outline:none}
+.nav-links a.active{background:var(--accent);color:#fff;border-color:var(--accentBorder)}
 .card h3{margin:0 0 8px;font-size:16px}
 .card p{margin:0;color:var(--muted);line-height:1.6}
 .testimonials-wrap{

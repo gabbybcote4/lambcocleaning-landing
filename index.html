@@ -216,4 +216,32 @@
       }));
     })();
   </script>
+  <script>
+    // Highlight nav links based on scroll position
+    (function(){
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-links a');
+      if(!sections.length || !navLinks.length) return;
+
+      const idToLink = {};
+      navLinks.forEach(function(a){ const href = a.getAttribute('href'); if(href && href.startsWith('#')) idToLink[href.slice(1)] = a; });
+
+      const obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          const id = entry.target.id;
+          const link = idToLink[id];
+          if(!link) return;
+          if(entry.isIntersecting){
+            navLinks.forEach(function(n){ n.classList.remove('active'); });
+            link.classList.add('active');
+          }
+        });
+      }, { root: null, rootMargin: '0px 0px -60% 0px', threshold: 0 });
+
+      sections.forEach(function(s){ obs.observe(s); });
+
+      // smooth scroll for browsers
+      document.documentElement.style.scrollBehavior = 'smooth';
+    })();
+  </script>
 </body>
