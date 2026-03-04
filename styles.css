@@ -27,6 +27,9 @@ body{
   line-height:1.6;
 }
 
+/* reserve space for the fixed nav so content doesn't jump */
+body{padding-top:calc(var(--nav-height));}
+
 a{color:inherit;text-decoration:none}
 .wrap{width:min(980px,92vw);margin:0 auto;padding:12px 0}
 
@@ -45,7 +48,7 @@ a{color:inherit;text-decoration:none}
   color:var(--muted);
   font-size:12px;
   margin:0 0 12px;
-  background: transparent;
+  /* background: transparent; */
 }
 h1{margin:0 0 12px;font-size:30px;letter-spacing:-0.02em;font-weight:600}
 .sub{margin:0 0 12px;color:var(--muted);line-height:1.6;font-size:16px}
@@ -55,7 +58,7 @@ h1{margin:0 0 12px;font-size:30px;letter-spacing:-0.02em;font-weight:600}
   padding:12px 12px;
   border-radius:12px;
   border:1px solid var(--border);
-  background:transparent;
+  /* background:transparent; */
   transition:all .18s ease;
 }
 .btn.primary{
@@ -111,30 +114,35 @@ h2{margin:0 0 12px;font-size:22px}
 }
 
 /* Top navigation */
-.site-nav{padding:12px 0;background:transparent}
-.site-nav{padding:12px;margin:0;background:transparent;height:var(--nav-height);position:sticky;top:0;z-index:60;box-shadow:0 6px 20px rgba(0,0,0,.06)}
-.site-nav .nav-inner{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:12px;height:100%;padding:12px 0 12px;position:relative}
+.site-nav{padding:12px 0;}
+.site-nav{padding:12px;margin:0;height:var(--nav-height);position:fixed;left:0;right:0;top:0;z-index:999;box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.site-nav .nav-inner{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:12px;height:100%;padding:12px 0 12px;position:relative;z-index:1}
 .logo{font-weight:700;color:var(--footer-text);text-shadow:0 2px 6px rgba(0,0,0,.25);font-size:16px}
 .nav-links{list-style:none;margin:0;padding:12px;display:flex;gap:12px;justify-content:center;z-index:2}
 .nav-links li{display:inline-block}
-.nav-links a{display:inline-block;padding:12px 12px;border-radius:12px;border:1px solid var(--border);background:transparent;color:var(--text);text-decoration:none}
+.nav-links a{display:inline-block;padding:12px 12px;border-radius:12px;border:1px solid var(--border);color:var(--text);text-decoration:none}
 .nav-cta{margin-left:0}
 .site-nav{background-repeat:no-repeat}
 
 /* Hero logo inside the hero card */
 .site-logo{
-  width:240px;
+  width:auto;
+  /* max-width:220px; */
   height:auto;
   display:block;
-  margin-bottom:12px;
+  margin:0 auto 12px;
+  max-height: calc(var(--nav-height) - 24px);
+  object-fit: contain;
+  position:relative;
+  /* z-index:1001; make sure logo sits above the nav overlay */
 }
 
 @media (max-width:720px){
-  .site-logo{width:96px}
+  /* .site-logo{width:96px} */
 }
 
 /* Social proof strip */
-.social-proof{background:transparent;padding:12px 0}
+.social-proof{padding:12px 0}
 .social-inner{display:flex;align-items:center;gap:12px;justify-content:center}
 .social-inner .stars{font-weight:700;color:var(--accent)}
 .proof-text{color:var(--muted)}
@@ -148,7 +156,7 @@ h2{margin:0 0 12px;font-size:22px}
 /* Features band */
 .features-band{background:var(--accentSoft);padding:12px;border-radius:12px;margin-top:12px}
 .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
-.features-grid .card{background:transparent;  border:1px solid var(--border);}
+.features-grid .card{  border:1px solid var(--border);}
 
 /* Lead magnet */
 .lead-magnet{padding:0}
@@ -209,10 +217,10 @@ h2{margin:0 0 12px;font-size:22px}
 
   /* nav: reduce height, make links stack/flow and ensure tap targets */
   .site-nav{background-position:center top}
-  .site-nav::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.55);pointer-events:none}
+  .site-nav::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.55);pointer-events:none;z-index:0}
   .site-nav .nav-inner{padding-bottom:12px}
   .nav-links{position:static;transform:none;bottom:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding:12px 0}
-  .nav-links a{padding:12px 12px;border-radius:12px;border:1px solid var(--border);background:transparent;font-size:16px}
+  .nav-links a{padding:12px 12px;border-radius:12px;border:1px solid var(--border);font-size:16px}
   .nav-cta{display:none} /* hide the extra CTA to save space on mobile — main CTAs exist in hero */
 
   /* Hero: stack and tighten spacing */
@@ -220,7 +228,7 @@ h2{margin:0 0 12px;font-size:22px}
   .hero-content{padding:12px}
   h1{font-size:30px}
   .sub{font-size:16px}
-  .site-logo{width:96px}
+  /* .site-logo{max-width:96px} */
   .hero-visual{display:none}
 
   /* Testimonials: make cards wider and centered in the carousel */
@@ -374,7 +382,7 @@ section[id], header[id], .wrap [id] { scroll-margin-top: calc(var(--nav-height) 
 .carousel-btn:focus{outline:2px solid var(--accent);outline-offset:2px}
 .muted{color:var(--muted);margin:0 0 12px}
 .contact{
-  background:linear-gradient(180deg, var(--accentSoft), transparent);
+  background:linear-gradient(180deg, var(--accentSoft), );
   border:1px solid var(--border);
   border-radius:12px;
   padding:1812pxpx;
@@ -388,7 +396,7 @@ section[id], header[id], .wrap [id] { scroll-margin-top: calc(var(--nav-height) 
   align-items:center;
   gap:8px;
   flex-wrap:wrap;
-  background:transparent;
+  /* background:transparent; */
   color:var(--muted);
   font-size:13px;
 }
