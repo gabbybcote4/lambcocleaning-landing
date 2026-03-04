@@ -114,6 +114,7 @@
             <div class="service-cta"><a class="btn primary" href="mailto:lambcocleaningco@gmail.com?subject=Airbnb%20Turnover%20Quote">Get a Quote</a></div>
           </article>
         </div>
+        <div id="services-status" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-live="polite"></div>
         <button class="carousel-btn service-next" aria-label="Next services">›</button>
       </div>
     </section>
@@ -383,19 +384,70 @@
       scrollToIndex(0, {behavior:'auto'});
       startAutoplay();
     })();
-    // Simple carousel controls for services
+    // Accessible carousel controls for services (mirrors testimonials behavior)
     (function(){
       const track = document.querySelector('.services-grid');
       const prev = document.querySelector('.service-prev');
       const next = document.querySelector('.service-next');
+      const status = document.getElementById('services-status');
       if(!track || !prev || !next) return;
 
-      const scrollBy = () => Math.round(track.clientWidth * 0.8);
+      const items = Array.from(track.querySelectorAll('.service'));
+      const total = items.length || 0;
+      let currentIndex = 0;
 
-      prev.addEventListener('click', ()=> track.scrollBy({left: -scrollBy(), behavior: 'smooth'}));
-      next.addEventListener('click', ()=> track.scrollBy({left: scrollBy(), behavior: 'smooth'}));
+      // make slides focusable
+      items.forEach(i=>i.setAttribute('tabindex','0'));
 
+      function scrollToIndex(i, opts={behavior:'smooth'}){
+        const item = items[i];
+        if(!item) return;
+        track.scrollTo({left: item.offsetLeft, behavior: opts.behavior});
+        currentIndex = i;
+        updateStatus();
+      }
+
+      function updateStatus(){ if(!status) return; status.textContent = `Service ${currentIndex + 1} of ${total}`; }
+
+      function findIndexNearest(){
+        const center = track.scrollLeft + track.clientWidth/2;
+        let nearest = 0; let nearestDist = Infinity;
+        items.forEach((it, idx)=>{
+          const itCenter = it.offsetLeft + it.offsetWidth/2;
+          const d = Math.abs(itCenter - center);
+          if(d < nearestDist){ nearestDist = d; nearest = idx; }
+        });
+        return nearest;
+      }
+
+      prev.addEventListener('click', ()=>{ currentIndex = Math.max(0, currentIndex - 1); scrollToIndex(currentIndex); });
+      next.addEventListener('click', ()=>{ currentIndex = Math.min(total - 1, currentIndex + 1); scrollToIndex(currentIndex); });
       [prev, next].forEach(btn=>btn.addEventListener('keydown', e=>{ if(e.key === 'Enter' || e.key === ' ') btn.click(); }));
+
+      // update index on manual scroll
+      let scrollDebounce = null;
+      track.addEventListener('scroll', ()=>{
+        if(scrollDebounce) clearTimeout(scrollDebounce);
+        scrollDebounce = setTimeout(()=>{ currentIndex = findIndexNearest(); updateStatus(); }, 120);
+      });
+
+      // Autoplay with reduced-motion respect
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let autoplayInterval = 5000;
+      let autoplayId = null;
+
+      function startAutoplay(){ if(prefersReduced || total <= 1) return; stopAutoplay(); autoplayId = setInterval(()=>{ currentIndex = (currentIndex + 1) % total; scrollToIndex(currentIndex); }, autoplayInterval); }
+      function stopAutoplay(){ if(autoplayId){ clearInterval(autoplayId); autoplayId = null; } }
+
+      track.addEventListener('mouseenter', stopAutoplay);
+      track.addEventListener('mouseleave', startAutoplay);
+      track.addEventListener('focusin', stopAutoplay);
+      track.addEventListener('focusout', startAutoplay);
+
+      [prev, next].forEach(btn=>{ btn.addEventListener('click', ()=>{ stopAutoplay(); setTimeout(startAutoplay, autoplayInterval + 200); }); });
+
+      // init
+      updateStatus(); scrollToIndex(0, {behavior:'auto'}); startAutoplay();
     })();
   </script>
   <script>
