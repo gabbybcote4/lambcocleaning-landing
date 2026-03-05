@@ -160,11 +160,11 @@ h2{margin:0 0 12px;font-size:22px}
 /* .site-nav{background-repeat:no-repeat} */
 
 .site-logo{
-  width:auto;
+  width:100%;
   height:auto;
   display:block;
   margin:0 auto 0;
-  max-height: calc(var(--nav-height) - 24px);
+  max-height: 240px;
   object-fit: contain;
   position:relative;
 }
