@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Lamb Co Cleaning</title>
   <meta name="description" content="Residential cleaning services. View our work on Instagram and request a quote." />
-  <!-- Open Graph & Twitter Card -->
   <meta property="og:title" content="Lamb Co Cleaning — Home & Airbnb Cleaning in St. Albert" />
   <meta property="og:description" content="Reliable, detail-focused residential and Airbnb cleaning serving St. Albert and surrounding areas." />
   <meta property="og:image" content="assets/kitchen1.jpg" />
@@ -14,9 +13,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Lamb Co Cleaning — Home & Airbnb Cleaning in St. Albert" />
   <meta name="twitter:description" content="Reliable, detail-focused residential and Airbnb cleaning serving St. Albert and surrounding areas." />
-  <!-- canonical: update to your live site URL -->
-  <link rel="canonical" href="https://yourdomain.example/" />
-  <!-- LocalBusiness structured data (JSON-LD) -->
+  <link rel="canonical" href="http://lambcocleaning.com"/>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -24,7 +21,7 @@
     "name": "Lamb Co Cleaning",
     "telephone": "+17802651749",
     "address": { "@type": "PostalAddress", "addressLocality": "St. Albert" },
-    "url": "https://yourdomain.example/",
+    "url": "http://lambcocleaning.com/",
     "description": "Residential and Airbnb cleaning services focused on reliability and attention to detail."
   }
   </script>
@@ -32,8 +29,8 @@
 </head>
 
 <body>
-  <nav class="site-nav" aria-label="Main navigation">
-    <div class="wrap nav-inner">
+  <nav aria-label="Main navigation">
+    <div>
       <ul class="nav-links">
         <li><a class="btn primary"href="#services">Services</a></li>
         <li><a class="btn primary"href="#about">About</a></li>
@@ -65,7 +62,7 @@
       <div class="about-copy">
         <h2 style="text-align:center">About Lamb Co Cleaning</h2>
         <p class="muted" style="text-align:center">Owner-operated local organic cleaning service focused on reliability, detail, and trust. Lamb Co Cleaning leads a small, vetted team who treat your home like theirs.</p>
-        <p style="text-align:center">We offer flexible scheduling, COVID-safe practices, and specialty Airbnb turnovers. Our clients consistently praise the attention to detail and friendly service.</p>
+        <p style="text-align:center">We offer flexible scheduling, safe cleaning protocols, and specialty Airbnb turnovers. Our clients consistently praise the attention to detail and friendly service.</p>
         <div class="cta" style="margin-top:18px;text-align:center">
           <a class="btn primary" style="width: 100%" href="mailto:lambcocleaningco@gmail.com?subject=About%20Lamb%20Co">Contact Lamb Co Cleaning</a>
         </div>
@@ -87,7 +84,6 @@
   <main class="wrap">
     <section id="services" class="section">
       <h2 style="text-align:center">Services</h2>
-
       <div class="services-wrap" style="text-align:center">
         <button class="carousel-btn service-prev" aria-label="Previous services">‹</button>
         <div class="services-grid" role="list">
@@ -124,7 +120,7 @@
       <h2 style="text-align:center">What our clients have to say</h2>
       <div class="testimonials-wrap" style="text-align:center">
         <button class="carousel-btn prev" aria-label="Previous testimonials">‹</button>
-  <div class="testimonials-grid" role="list">
+        <div class="testimonials-grid" role="list">
           <figure class="testimonial card">
             <blockquote>So very grateful to have had Lamb Co Cleaning’s company — incredible Airbnb cleaning and five-star results. <a href="#" class="read-more">Read more</a></blockquote>
             <div class="testimonial-full" hidden>So very grateful to have had Lamb Co Cleaning’s company, Lamb Co. Cleaning, recommended to me! As an owner and operator of an Airbnb, I have been nervous about handing over the cleaning to anyone else besides myself. When Lamb Co Cleaning was recommended to take over for my two month vacation away from home, I decided to give it a try. I have nothing but great things to say about the work that she does. I continue to get five star reviews with comments about the pristine cleanliness of the suite in my Airbnb reviews and I’m very grateful that I can continue to have it running while I am away for long periods of time. Lamb Co Cleaning is an exception communicator, is very accommodating, and does an excellent clean every single time! She takes great pride in her business and I would highly recommend to anyone looking for quality, professional cleaning. 5 Stars for sure!!</div>
@@ -189,9 +185,12 @@
         <img src="assets/kitchen1.jpg" alt="Kitchen after cleaning" class="media">
         <img src="assets/bathroom1.jpg" alt="Bathroom after cleaning" class="media">
         <img src="assets/livingroom1.jpg" alt="Living room after cleaning" class="media">
-        <video class="media" autoplay muted loop playsinline>
-        <source src="assets/kitchen-vid.mov" type="video/mp4">
+        <img src="assets/bathroom12.JPG" alt="Bathroom after cleaning" class="media">
+
+        <video class="media" autoplay muted loop playsinline preload="auto" controls>
+          <source src="assets/bathroomvid.MOV" type="video/mp4">
         </video>
+
     </div>
 
     <div style="text-align:center">
@@ -206,6 +205,9 @@
         <a class="btn primary" style="width: 40%;" href="mailto:lambcocleaningco@gmail.com?subject=Cleaning%20Quote%20Request">Email</a>
         <a class="btn primary" style="width: 40%;" href="tel:+17802651749">Call/Text</a>
       </div>
+      <div style="text-align:center; margin-top:12px;">
+        <a class="btn review" href="https://www.facebook.com/lambcocleaningco/reviews">Leave a review</a>
+      </div>
     </section>
   </main>
 
@@ -213,7 +215,6 @@
     <div>© <span id="y"></span> Lamb Co Cleaning</div>
   </footer>
 
-  <!-- Modal for full testimonials -->
   <div class="modal-overlay" id="testimonialModal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal" role="document">
       <button class="modal-close" aria-label="Close">×</button>
@@ -272,11 +273,8 @@
       document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
     })();
   </script>
-  <!-- Back-to-top floating button (bottom-right) -->
   <button id="backToTop" class="back-to-top hidden" aria-label="Back to top" title="Back to top">↑</button>
-
   <script>
-    // Back-to-top button behavior
     (function(){
       const btn = document.getElementById('backToTop');
       if(!btn) return;
